@@ -6,13 +6,13 @@
 
 **注：由于葫芦娃素材相对较为缺乏，为提高游戏的可玩性，本次作业未使用葫芦娃素材（在作业开始前已经询问并征得曹老师同意）**
 
-![](C:\Users\46949\Desktop\pictures\pictures\java大作业\java大作业效果展示1.gif)
+<img src="https://github.com/KSDeng/pictures/blob/master/pictures/java%E5%A4%A7%E4%BD%9C%E4%B8%9A/java%E5%A4%A7%E4%BD%9C%E4%B8%9A%E6%95%88%E6%9E%9C%E5%B1%95%E7%A4%BA1.gif?raw=true">
 
 ## 整体结构
 
 程序共计27个类，它们之间的关系图如下：
 
-![](C:\Users\46949\Desktop\pictures\pictures\java大作业\Classes Relationship Diagram.png)
+<img src="https://github.com/KSDeng/pictures/blob/master/pictures/java%E5%A4%A7%E4%BD%9C%E4%B8%9A/Classes%20Relationship%20Diagram.png?raw=true">
 
 其中GameObject 是游戏中所有实体的父类，提供相关的基本数据（如坐标、阵营标记等）和公共操作。
 
@@ -20,17 +20,17 @@ GameScreen 是游戏屏幕的父类，提供与屏幕刷新、事件监听和增
 
 GameApplication 是应用程序启动类，声明加载画面前/后所进行的操作的方法，并提供获取整个场景和排布的接口。
 
-![](C:\Users\46949\Desktop\pictures\pictures\java大作业\基本框架及其接口.png)
+<img src="https://github.com/KSDeng/pictures/blob/master/pictures/java%E5%A4%A7%E4%BD%9C%E4%B8%9A/%E5%9F%BA%E6%9C%AC%E6%A1%86%E6%9E%B6%E5%8F%8A%E5%85%B6%E6%8E%A5%E5%8F%A3.png?raw=true">
 
 
 
 ## 原理分析
 
-![](C:\Users\46949\Desktop\pictures\pictures\java大作业\GameObject系.png)
+<img src="https://github.com/KSDeng/pictures/blob/master/pictures/java%E5%A4%A7%E4%BD%9C%E4%B8%9A/GameObject%E7%B3%BB.png?raw=true">
 
 GameObject子类包括IceHit、BloodMedicine、IceWave、Character、Weapon、Shield、FireSphere和FireExplode，分别表示冰光受击效果、体力恢复药水、冰光发出效果、人物、武器、护盾、火球和火球爆炸效果
 
-![](C:\Users\46949\Desktop\pictures\pictures\java大作业\MyAudio系.png)
+<img src="https://github.com/KSDeng/pictures/blob/master/pictures/java%E5%A4%A7%E4%BD%9C%E4%B8%9A/MyAudio%E7%B3%BB.png?raw=true">
 
 MyAudio的子类包括ShieldAudio、IceAudio、ExplodeAudio和WinAudio，分别对应光盾音效、冰光音效、爆炸音效和胜利音效。
 
