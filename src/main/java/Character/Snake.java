@@ -36,87 +36,83 @@ public class Snake extends Character {
     private int probabilityGenerateBlood = 40;           //掉落药品的概率
     //初始化各种形象
     static {
-        try {
             standImages = new Image[]{
-                    new Image(new FileInputStream(wd + "\\resources\\monster1\\stand\\left.png")),
-                    new Image(new FileInputStream(wd + "\\resources\\monster1\\stand\\right.png")),
-                    new Image(new FileInputStream(wd + "\\resources\\monster1\\stand\\down.png")),
-                    new Image(new FileInputStream(wd + "\\resources\\monster1\\stand\\up.png"))
+                    new Image(loader.getResource("snakeStandLeft.png").toString()),
+                    new Image(loader.getResource("snakeStandRight.png").toString()),
+                    new Image(loader.getResource("snakeStandUp.png").toString()),
+                    new Image(loader.getResource("snakeStandDown.png").toString()),
             };
             deadImages = new Image[]{
-                    new Image(new FileInputStream(wd + "\\resources\\monster1\\dead\\deadLeft.png")),
-                    new Image(new FileInputStream(wd + "\\resources\\monster1\\dead\\deadRight.png")),
-                    new Image(new FileInputStream(wd + "\\resources\\monster1\\dead\\deadUp.png")),
-                    new Image(new FileInputStream(wd + "\\resources\\monster1\\dead\\deadDown.png"))
+                    new Image(loader.getResource("snakeDeadLeft.png").toString()),
+                    new Image(loader.getResource("snakeDeadRight.png").toString()),
+                    new Image(loader.getResource("snakeDeadUp.png").toString()),
+                    new Image(loader.getResource("snakeDeadDown.png").toString()),
             };
             moveImages = new Image[][]{
                     {
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\move\\moveLeft1.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\move\\moveLeft2.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\move\\moveLeft3.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\move\\moveLeft4.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\move\\moveLeft5.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\move\\moveLeft6.png"))
+                            new Image(loader.getResource("snakeMoveLeft1.png").toString()),
+                            new Image(loader.getResource("snakeMoveLeft2.png").toString()),
+                            new Image(loader.getResource("snakeMoveLeft3.png").toString()),
+                            new Image(loader.getResource("snakeMoveLeft4.png").toString()),
+                            new Image(loader.getResource("snakeMoveLeft5.png").toString()),
+                            new Image(loader.getResource("snakeMoveLeft6.png").toString())
                     },
                     {
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\move\\moveRight1.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\move\\moveRight2.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\move\\moveRight3.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\move\\moveRight4.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\move\\moveRight5.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\move\\moveRight6.png"))
+                            new Image(loader.getResource("snakeMoveRight1.png").toString()),
+                            new Image(loader.getResource("snakeMoveRight2.png").toString()),
+                            new Image(loader.getResource("snakeMoveRight3.png").toString()),
+                            new Image(loader.getResource("snakeMoveRight4.png").toString()),
+                            new Image(loader.getResource("snakeMoveRight5.png").toString()),
+                            new Image(loader.getResource("snakeMoveRight6.png").toString())
                     },
                     {
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\move\\moveUp1.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\move\\moveUp2.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\move\\moveUp3.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\move\\moveUp4.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\move\\moveUp5.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\move\\moveUp6.png"))
+                            new Image(loader.getResource("snakeMoveUp1.png").toString()),
+                            new Image(loader.getResource("snakeMoveUp2.png").toString()),
+                            new Image(loader.getResource("snakeMoveUp3.png").toString()),
+                            new Image(loader.getResource("snakeMoveUp4.png").toString()),
+                            new Image(loader.getResource("snakeMoveUp5.png").toString()),
+                            new Image(loader.getResource("snakeMoveUp6.png").toString())
                     },
                     {
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\move\\moveDown1.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\move\\moveDown2.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\move\\moveDown3.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\move\\moveDown4.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\move\\moveDown5.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\move\\moveDown6.png"))
+                            new Image(loader.getResource("snakeMoveDown1.png").toString()),
+                            new Image(loader.getResource("snakeMoveDown2.png").toString()),
+                            new Image(loader.getResource("snakeMoveDown3.png").toString()),
+                            new Image(loader.getResource("snakeMoveDown4.png").toString()),
+                            new Image(loader.getResource("snakeMoveDown5.png").toString()),
+                            new Image(loader.getResource("snakeMoveDown6.png").toString())
                     }
             };
             atkImages = new Image[][]{
                     {
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\atk\\atkLeft1.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\atk\\atkLeft2.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\atk\\atkLeft3.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\atk\\atkLeft4.png")),
+                            new Image(loader.getResource("snakeAtkLeft1.png").toString()),
+                            new Image(loader.getResource("snakeAtkLeft2.png").toString()),
+                            new Image(loader.getResource("snakeAtkLeft3.png").toString()),
+                            new Image(loader.getResource("snakeAtkLeft4.png").toString()),
                             standImages[Direction.Left.ordinal()]
                     },
                     {
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\atk\\atkRight1.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\atk\\atkRight2.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\atk\\atkRight3.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\atk\\atkRight4.png")),
+                            new Image(loader.getResource("snakeAtkRight1.png").toString()),
+                            new Image(loader.getResource("snakeAtkRight2.png").toString()),
+                            new Image(loader.getResource("snakeAtkRight3.png").toString()),
+                            new Image(loader.getResource("snakeAtkRight4.png").toString()),
                             standImages[Direction.Right.ordinal()]
                     },
                     {
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\atk\\atkUp1.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\atk\\atkUp2.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\atk\\atkUp3.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\atk\\atkUp4.png")),
+                            new Image(loader.getResource("snakeAtkUp1.png").toString()),
+                            new Image(loader.getResource("snakeAtkUp2.png").toString()),
+                            new Image(loader.getResource("snakeAtkUp3.png").toString()),
+                            new Image(loader.getResource("snakeAtkUp4.png").toString()),
                             standImages[Direction.Up.ordinal()]
                     },
                     {
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\atk\\atkDown1.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\atk\\atkDown2.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\atk\\atkDown3.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\monster1\\atk\\atkDown4.png")),
+                            new Image(loader.getResource("snakeAtkDown1.png").toString()),
+                            new Image(loader.getResource("snakeAtkDown2.png").toString()),
+                            new Image(loader.getResource("snakeAtkDown3.png").toString()),
+                            new Image(loader.getResource("snakeAtkDown4.png").toString()),
                             standImages[Direction.Down.ordinal()]
                     }
             };
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
     }
 
 

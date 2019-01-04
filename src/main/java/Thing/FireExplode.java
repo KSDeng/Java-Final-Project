@@ -14,11 +14,7 @@ public class FireExplode extends GameObject {
     private static int drawCount = 10;
     private int count;
     static{
-        try {
-            image = new Image(new FileInputStream(wd +"\\resources\\hitEffect\\fireExplode.gif"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        image = new Image(loader.getResource("fireExplode.gif").toString());
     }
 
     public FireExplode(int x,int y,boolean good,GameAdmin admin){

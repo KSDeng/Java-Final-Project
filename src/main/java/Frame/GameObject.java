@@ -16,7 +16,8 @@ public abstract class GameObject {
     protected BooleanProperty updateProperty = new SimpleBooleanProperty(true);
     protected BooleanProperty visibleProperty = new SimpleBooleanProperty(true);
     protected BooleanProperty isGoodProperty = new SimpleBooleanProperty(true);
-    protected static final String wd = System.getProperty("user.dir");
+
+    protected static ClassLoader loader = GameObject.class.getClassLoader();
 
     public GameObject(){
         this.xProperty = new SimpleIntegerProperty(0);

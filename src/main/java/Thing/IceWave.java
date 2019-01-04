@@ -23,16 +23,13 @@ public class IceWave extends GameObject {
     private static Image[] images = null;
 
     static{
-        try {
             images = new Image[]{
-                    new Image(new FileInputStream(wd + "\\resources\\effect1\\left.png")),
-                    new Image(new FileInputStream(wd + "\\resources\\effect1\\right.png")),
-                    new Image(new FileInputStream(wd + "\\resources\\effect1\\up.png")),
-                    new Image(new FileInputStream(wd + "\\resources\\effect1\\down.png"))
+                    new Image(loader.getResource("iceWaveLeft.png").toString()),
+                    new Image(loader.getResource("iceWaveRight.png").toString()),
+                    new Image(loader.getResource("iceWaveUp.png").toString()),
+                    new Image(loader.getResource("iceWaveDown.png").toString())
             };
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+
     }
     public IceWave(int x, int y, Direction direction, boolean good,GameAdmin admin){
         super(x,y,50,50,good);

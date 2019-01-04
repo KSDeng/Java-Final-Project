@@ -21,16 +21,12 @@ public class FireSphere extends GameObject {
     private int atkPower = 10;
     private static Image[] images = null;
     static {
-        try {
             images = new Image[]{
-                    new Image(new FileInputStream(wd +"\\resources\\monster1\\effect\\fireLeft.png")),
-                    new Image(new FileInputStream(wd +"\\resources\\monster1\\effect\\fireRight.png")),
-                    new Image(new FileInputStream(wd +"\\resources\\monster1\\effect\\fireUp.png")),
-                    new Image(new FileInputStream(wd +"\\resources\\monster1\\effect\\fireDown.png"))
+                    new Image(loader.getResource("fireLeft.png").toString()),
+                    new Image(loader.getResource("fireRight.png").toString()),
+                    new Image(loader.getResource("fireUp.png").toString()),
+                    new Image(loader.getResource("fireDown.png").toString())
             };
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
     }
     public FireSphere(int x, int y, Direction direction,boolean good, GameAdmin admin){
         super(x,y,50,50,good);

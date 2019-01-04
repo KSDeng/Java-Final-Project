@@ -26,17 +26,16 @@ public abstract class GameScreen extends Canvas {
     private int duration = 30;
     private boolean ifPutString;         
     private String outputString;         
-    private int xOutputString = 500, yOutputString = 300;       
-    protected static final String wd = System.getProperty("user.dir");
+    private int xOutputString = 500, yOutputString = 300;
     private static Image bkp = null;
 
-    static{
-        try {
-            bkp = new Image(new FileInputStream(wd + "\\resources\\background2.jpg"));
-        } catch (
-                FileNotFoundException e) {
-            e.printStackTrace();
-        }
+    private static ClassLoader loader = GameScreen.class.getClassLoader();
+    //private static String classPath = GameScreen.class.getClassLoader().getResource("").toString();
+
+    static {
+        //System.out.println(classPath);
+        bkp = new Image(loader.getResource("background2.jpg").toString());
+
     }
 
     protected double x, y, width, height;       //屏幕的位置和长、宽
@@ -48,6 +47,7 @@ public abstract class GameScreen extends Canvas {
         setLayoutX(x); setLayoutY(y);
         initTimeLine();
         ifPutString = false;
+        //bkp = new Image(classPath+"background2.jpg");
     }
 
     //初始化事件处理函数

@@ -11,7 +11,7 @@ public class WinAudio extends MyAudio{
     private static AudioStream audio = null;
     static{
         try {
-            audio = new AudioStream(new FileInputStream(wd + "\\resources\\audio\\win.wav"));
+            audio = new AudioStream(new FileInputStream(classPath + "\\audio\\win.wav"));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -15,19 +15,16 @@ public class IceHit extends GameObject {
     private Image currentImage;
 
     static{
-        try {
+
             images = new Image[]{
-                    new Image(new FileInputStream(wd + "\\resources\\hitEffect\\iceHit\\iceHit1.png")),
-                    new Image(new FileInputStream(wd + "\\resources\\hitEffect\\iceHit\\iceHit2.png")),
-                    new Image(new FileInputStream(wd + "\\resources\\hitEffect\\iceHit\\iceHit3.png")),
-                    new Image(new FileInputStream(wd + "\\resources\\hitEffect\\iceHit\\iceHit4.png")),
-                    new Image(new FileInputStream(wd + "\\resources\\hitEffect\\iceHit\\iceHit5.png")),
-                    new Image(new FileInputStream(wd + "\\resources\\hitEffect\\iceHit\\iceHit6.png")),
-                    new Image(new FileInputStream(wd + "\\resources\\hitEffect\\iceHit\\iceHit7.png"))
+                    new Image(loader.getResource("iceHit1.png").toString()),
+                    new Image(loader.getResource("iceHit2.png").toString()),
+                    new Image(loader.getResource("iceHit3.png").toString()),
+                    new Image(loader.getResource("iceHit4.png").toString()),
+                    new Image(loader.getResource("iceHit5.png").toString()),
+                    new Image(loader.getResource("iceHit6.png").toString()),
+                    new Image(loader.getResource("iceHit7.png").toString())
             };
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
     }
     public IceHit(int x, int y, boolean good,GameAdmin admin){
         super(x,y,50,50,good);

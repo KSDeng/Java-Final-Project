@@ -21,13 +21,11 @@ public abstract class Character extends GameObject {
     protected int xPre, yPre;         //记录上一时刻的位置
     protected Image currentImage;       //当前形象
     protected static Image hpImage, magicImage;     //血槽和魔法值槽
+
     static{
-        try {
-            hpImage = new Image(new FileInputStream(wd + "\\resources\\things\\hp.png"),60,5,false,false);
-            magicImage = new Image(new FileInputStream(wd + "\\resources\\things\\magic.png"),60,5,false,false);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+            hpImage = new Image(loader.getResource("hp.png").toString() ,60,5,false,false);
+            magicImage = new Image(loader.getResource("magic.png").toString() ,60,5,false,false);
+
     }
 
     public Character(int x, int y, int width, int height,Direction direction,boolean good, GameAdmin admin){

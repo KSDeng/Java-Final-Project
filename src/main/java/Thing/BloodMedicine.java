@@ -20,11 +20,8 @@ public class BloodMedicine extends GameObject {
     private static int maintainTime = 5000;
     private static int recoverAmount = 40;
     static{
-        try {
-            image = new Image(new FileInputStream(wd + "\\resources\\things\\bloodMedicine.png"),40,40,false,false);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+            image = new Image(loader.getResource("bloodMedicine.png").toString() ,40,40,false,false);
+
     }
 
     public BloodMedicine(int x, int y, boolean good, GameAdmin admin){

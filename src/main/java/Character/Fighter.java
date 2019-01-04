@@ -14,13 +14,9 @@ import Thing.Shield;
 import Thing.Weapon;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import sun.audio.AudioPlayer;
-import sun.audio.AudioStream;
 
 import java.awt.*;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.File;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -47,95 +43,92 @@ public class Fighter extends Character {
     private static int shieldMagicConsume = 70;         //召唤一次护盾消耗的魔法值
     private static int fullHp = 100, fullMagic = 100;   //满血血量, 满魔法值
 
-
     static{
 
-        try {
-            shieldIcon = new Image(new FileInputStream(wd + "\\resources\\things\\shieldIcon.png"),30,30,false,false);
-            win = new Image(new FileInputStream(wd + "\\resources\\end\\win.png"),600,400,false,false);
-            failure = new Image(new FileInputStream(wd + "\\resources\\end\\failure.png"),650,300,false,false);
+            shieldIcon = new Image(loader.getResource("shieldIcon.png").toString(),30,30,false,false);
+            win = new Image((loader.getResource("win.png").toString()  ),600,400,false,false);
+            failure = new Image((loader.getResource("failure.png").toString()),650,300,false,false);
             standImages = new Image[]{
-                    new Image(new FileInputStream(wd + "\\resources\\role1\\stand\\left.png")),
-                    new Image(new FileInputStream(wd + "\\resources\\role1\\stand\\right.png")),
-                    new Image(new FileInputStream(wd + "\\resources\\role1\\stand\\up.png")),
-                    new Image(new FileInputStream(wd + "\\resources\\role1\\stand\\down.png"))
+                    new Image((loader.getResource("role1StandLeft.png").toString() )),
+                    new Image((loader.getResource("role1StandRight.png").toString() )),
+                    new Image((loader.getResource("role1StandUp.png").toString() )),
+                    new Image((loader.getResource("role1StandDown.png").toString() ))
             };
             moveImages = new Image[][]{
                     {
-                            new Image(new FileInputStream(wd+"\\resources\\role1\\move\\moveLeft1.png")),
-                            new Image(new FileInputStream(wd+"\\resources\\role1\\move\\moveLeft2.png")),
-                            new Image(new FileInputStream(wd+"\\resources\\role1\\move\\moveLeft3.png")),
-                            new Image(new FileInputStream(wd+"\\resources\\role1\\move\\moveLeft4.png")),
-                            new Image(new FileInputStream(wd+"\\resources\\role1\\move\\moveLeft5.png")),
-                            new Image(new FileInputStream(wd+"\\resources\\role1\\move\\moveLeft6.png"))
+                            new Image((loader.getResource("role1MoveLeft1.png").toString())),
+                            new Image((loader.getResource("role1MoveLeft2.png").toString())),
+                            new Image((loader.getResource("role1MoveLeft3.png").toString())),
+                            new Image((loader.getResource("role1MoveLeft4.png").toString())),
+                            new Image((loader.getResource("role1MoveLeft5.png").toString())),
+                            new Image((loader.getResource("role1MoveLeft6.png").toString()))
                     },
                     {
-                            new Image(new FileInputStream(wd+"\\resources\\role1\\move\\moveRight1.png")),
-                            new Image(new FileInputStream(wd+"\\resources\\role1\\move\\moveRight2.png")),
-                            new Image(new FileInputStream(wd+"\\resources\\role1\\move\\moveRight3.png")),
-                            new Image(new FileInputStream(wd+"\\resources\\role1\\move\\moveRight4.png")),
-                            new Image(new FileInputStream(wd+"\\resources\\role1\\move\\moveRight5.png")),
-                            new Image(new FileInputStream(wd+"\\resources\\role1\\move\\moveRight6.png"))
+                            new Image((loader.getResource("role1MoveRight1.png").toString())),
+                            new Image((loader.getResource("role1MoveRight2.png").toString())),
+                            new Image((loader.getResource("role1MoveRight3.png").toString())),
+                            new Image((loader.getResource("role1MoveRight4.png").toString())),
+                            new Image((loader.getResource("role1MoveRight5.png").toString())),
+                            new Image((loader.getResource("role1MoveRight6.png").toString()))
                     },
                     {
-                            new Image(new FileInputStream(wd+"\\resources\\role1\\move\\moveUp1.png")),
-                            new Image(new FileInputStream(wd+"\\resources\\role1\\move\\moveUp2.png")),
-                            new Image(new FileInputStream(wd+"\\resources\\role1\\move\\moveUp3.png")),
-                            new Image(new FileInputStream(wd+"\\resources\\role1\\move\\moveUp4.png")),
-                            new Image(new FileInputStream(wd+"\\resources\\role1\\move\\moveUp5.png")),
-                            new Image(new FileInputStream(wd+"\\resources\\role1\\move\\moveUp6.png"))
+                            new Image((loader.getResource("role1MoveUp1.png").toString())),
+                            new Image((loader.getResource("role1MoveUp2.png").toString())),
+                            new Image((loader.getResource("role1MoveUp3.png").toString())),
+                            new Image((loader.getResource("role1MoveUp4.png").toString())),
+                            new Image((loader.getResource("role1MoveUp5.png").toString())),
+                            new Image((loader.getResource("role1MoveUp6.png").toString()))
                     },
                     {
-                            new Image(new FileInputStream(wd+"\\resources\\role1\\move\\moveDown1.png")),
-                            new Image(new FileInputStream(wd+"\\resources\\role1\\move\\moveDown2.png")),
-                            new Image(new FileInputStream(wd+"\\resources\\role1\\move\\moveDown3.png")),
-                            new Image(new FileInputStream(wd+"\\resources\\role1\\move\\moveDown4.png")),
-                            new Image(new FileInputStream(wd+"\\resources\\role1\\move\\moveDown5.png")),
-                            new Image(new FileInputStream(wd+"\\resources\\role1\\move\\moveDown6.png"))
-                    }
-            };
-            atkImages = new Image[][]{
-                    {
-                            new Image(new FileInputStream(wd + "\\resources\\role1\\atk\\atkLeft1.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\role1\\atk\\atkLeft2.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\role1\\atk\\atkLeft3.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\role1\\atk\\atkLeft4.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\role1\\atk\\atkLeft5.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\role1\\atk\\atkLeft6.png")),
-                            standImages[Direction.Left.ordinal()]   //ordinal返回枚举量的序数
-                    },
-                    {
-                            new Image(new FileInputStream(wd + "\\resources\\role1\\atk\\atkRight1.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\role1\\atk\\atkRight2.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\role1\\atk\\atkRight3.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\role1\\atk\\atkRight4.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\role1\\atk\\atkRight5.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\role1\\atk\\atkRight6.png")),
-                            standImages[Direction.Right.ordinal()]
-                    },
-                    {
-                            new Image(new FileInputStream(wd + "\\resources\\role1\\atk\\atkUp1.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\role1\\atk\\atkUp2.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\role1\\atk\\atkUp3.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\role1\\atk\\atkUp4.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\role1\\atk\\atkUp5.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\role1\\atk\\atkUp6.png")),
-                            standImages[Direction.Up.ordinal()]
-                    },
-                    {
-                            new Image(new FileInputStream(wd + "\\resources\\role1\\atk\\atkDown1.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\role1\\atk\\atkDown2.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\role1\\atk\\atkDown3.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\role1\\atk\\atkDown4.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\role1\\atk\\atkDown5.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\role1\\atk\\atkDown6.png")),
-                            standImages[Direction.Down.ordinal()]
+                            new Image((loader.getResource("role1MoveDown1.png").toString())),
+                            new Image((loader.getResource("role1MoveDown2.png").toString())),
+                            new Image((loader.getResource("role1MoveDown3.png").toString())),
+                            new Image((loader.getResource("role1MoveDown4.png").toString())),
+                            new Image((loader.getResource("role1MoveDown5.png").toString())),
+                            new Image((loader.getResource("role1MoveDown6.png").toString()))
                     }
             };
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+            atkImages = new Image[][]{
+                    {
+                            new Image((loader.getResource("role1AtkLeft1.png").toString())),
+                            new Image((loader.getResource("role1AtkLeft2.png").toString())),
+                            new Image((loader.getResource("role1AtkLeft3.png").toString())),
+                            new Image((loader.getResource("role1AtkLeft4.png").toString())),
+                            new Image((loader.getResource("role1AtkLeft5.png").toString())),
+                            new Image((loader.getResource("role1AtkLeft6.png").toString())),
+                            standImages[Direction.Left.ordinal()]   //ordinal返回枚举量的序数
+                    },
+                    {
+                            new Image((loader.getResource("role1AtkRight1.png").toString())),
+                            new Image((loader.getResource("role1AtkRight2.png").toString())),
+                            new Image((loader.getResource("role1AtkRight3.png").toString())),
+                            new Image((loader.getResource("role1AtkRight4.png").toString())),
+                            new Image((loader.getResource("role1AtkRight5.png").toString())),
+                            new Image((loader.getResource("role1AtkRight6.png").toString())),
+                            standImages[Direction.Right.ordinal()]   //ordinal返回枚举量的序数
+                    },
+                    {
+                            new Image((loader.getResource("role1AtkUp1.png").toString())),
+                            new Image((loader.getResource("role1AtkUp2.png").toString())),
+                            new Image((loader.getResource("role1AtkUp3.png").toString())),
+                            new Image((loader.getResource("role1AtkUp4.png").toString())),
+                            new Image((loader.getResource("role1AtkUp5.png").toString())),
+                            new Image((loader.getResource("role1AtkUp6.png").toString())),
+                            standImages[Direction.Up.ordinal()]   //ordinal返回枚举量的序数
+                    },
+                    {
+                            new Image((loader.getResource("role1AtkDown1.png").toString())),
+                            new Image((loader.getResource("role1AtkDown2.png").toString())),
+                            new Image((loader.getResource("role1AtkDown3.png").toString())),
+                            new Image((loader.getResource("role1AtkDown4.png").toString())),
+                            new Image((loader.getResource("role1AtkDown5.png").toString())),
+                            new Image((loader.getResource("role1AtkDown6.png").toString())),
+                            standImages[Direction.Down.ordinal()]   //ordinal返回枚举量的序数
+                    }
+
+            };
+
     }
 
 
@@ -153,7 +146,7 @@ public class Fighter extends Character {
         ifMagicIncreasing = true;
         magicIncreaseStart();
         fail = false;
-        new ExplodeAudio();new IceAudio();new ShieldAudio();new WinAudio();     
+        //new ExplodeAudio();new IceAudio();new ShieldAudio();new WinAudio();
     }
 
     protected void move() {
@@ -227,7 +220,7 @@ public class Fighter extends Character {
             return;
         }
         if(magic >= shieldMagicConsume){
-            new ShieldAudio().run();
+            //new ShieldAudio().run();
             magic -= shieldMagicConsume;
             this.admin.addObject(new Shield(getX() - 120,getY() - 120,true,this.admin));
         }
@@ -300,7 +293,7 @@ public class Fighter extends Character {
     }
 
     public void getHit(int xHit,int yHit,int hitPower){
-        new ExplodeAudio().run();
+        //new ExplodeAudio().run();
         this.admin.addObject(new FireExplode(xHit,yHit,false,this.admin));
         hp -= hitPower;
         if(hp <= 0) dead();    
@@ -326,7 +319,7 @@ public class Fighter extends Character {
     }
     
     private void createAtkEffect(){
-        new IceAudio().run();
+        //new IceAudio().run();
 
         switch (direction) {
             case Left: {
@@ -352,14 +345,14 @@ public class Fighter extends Character {
         }
     }
 
-    private void playWinAudio(){
-        new WinAudio().run();
-    }
+    //private void playWinAudio(){
+    //    new WinAudio().run();
+    //}
 
     public void draw(GraphicsContext gc) {
         if(admin.getNumMonster() == 0){         //游戏胜利
             gc.drawImage(win,250,100,(int)win.getWidth(),(int)win.getHeight());
-            playWinAudio();
+            //playWinAudio();
         }
         if(fail){                               //游戏失败
             gc.drawImage(failure,200,100,(int)failure.getWidth(),(int)failure.getHeight());

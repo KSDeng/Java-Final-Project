@@ -8,17 +8,10 @@ import java.io.IOException;
 
 public class IceAudio extends MyAudio {
     private AudioStream ice;
-    //private static AudioStream audio = null;
-    /*static{
-        try {
-            audio = new AudioStream(new FileInputStream(wd + "\\resources\\audio\\explode.wav"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
+
     public IceAudio(){
         try {
-            ice = new AudioStream(new FileInputStream(wd + "\\resources\\audio\\ice.wav"));
+            ice = new AudioStream(new FileInputStream(classPath + "\\audio\\ice.wav"));
         } catch (IOException e) {
             e.printStackTrace();
         }

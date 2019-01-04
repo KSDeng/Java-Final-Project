@@ -38,97 +38,93 @@ public class IceSword extends Weapon {
     }
     //初始化各种形象
     static{
-        try {
             standImages = new Image[]{
-                    new Image(new FileInputStream(wd + "\\resources\\weapon1\\stand\\right.png")),
-                    new Image(new FileInputStream(wd + "\\resources\\weapon1\\stand\\left.png")),
-                    new Image(new FileInputStream(wd + "\\resources\\weapon1\\stand\\up.png")),
-                    new Image(new FileInputStream(wd + "\\resources\\weapon1\\stand\\down.png"))
+                    new Image(loader.getResource("iceSwordStandLeft.png").toString()),
+                    new Image(loader.getResource("iceSwordStandRight.png").toString()),
+                    new Image(loader.getResource("iceSwordStandUp.png").toString()),
+                    new Image(loader.getResource("iceSwordStandDown.png").toString())
             };
             moveImages = new Image[][]{
                     {
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\move\\moveLeft1.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\move\\moveLeft2.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\move\\moveLeft3.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\move\\moveLeft4.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\move\\moveLeft5.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\move\\moveLeft6.png"))
+                            new Image(loader.getResource("iceSwordMoveLeft1.png").toString()),
+                            new Image(loader.getResource("iceSwordMoveLeft2.png").toString()),
+                            new Image(loader.getResource("iceSwordMoveLeft3.png").toString()),
+                            new Image(loader.getResource("iceSwordMoveLeft4.png").toString()),
+                            new Image(loader.getResource("iceSwordMoveLeft5.png").toString()),
+                            new Image(loader.getResource("iceSwordMoveLeft6.png").toString())
                     },
                     {
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\move\\moveRight1.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\move\\moveRight2.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\move\\moveRight3.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\move\\moveRight4.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\move\\moveRight5.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\move\\moveRight6.png"))
+                            new Image(loader.getResource("iceSwordMoveRight1.png").toString()),
+                            new Image(loader.getResource("iceSwordMoveRight2.png").toString()),
+                            new Image(loader.getResource("iceSwordMoveRight3.png").toString()),
+                            new Image(loader.getResource("iceSwordMoveRight4.png").toString()),
+                            new Image(loader.getResource("iceSwordMoveRight5.png").toString()),
+                            new Image(loader.getResource("iceSwordMoveRight6.png").toString())
                     },
                     {
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\move\\moveUp1.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\move\\moveUp2.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\move\\moveUp3.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\move\\moveUp4.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\move\\moveUp5.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\move\\moveUp6.png"))
+                            new Image(loader.getResource("iceSwordMoveUp1.png").toString()),
+                            new Image(loader.getResource("iceSwordMoveUp2.png").toString()),
+                            new Image(loader.getResource("iceSwordMoveUp3.png").toString()),
+                            new Image(loader.getResource("iceSwordMoveUp4.png").toString()),
+                            new Image(loader.getResource("iceSwordMoveUp5.png").toString()),
+                            new Image(loader.getResource("iceSwordMoveUp6.png").toString())
                     },
                     {
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\move\\moveDown1.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\move\\moveDown2.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\move\\moveDown3.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\move\\moveDown4.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\move\\moveDown5.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\move\\moveDown6.png"))
+                            new Image(loader.getResource("iceSwordMoveDown1.png").toString()),
+                            new Image(loader.getResource("iceSwordMoveDown2.png").toString()),
+                            new Image(loader.getResource("iceSwordMoveDown3.png").toString()),
+                            new Image(loader.getResource("iceSwordMoveDown4.png").toString()),
+                            new Image(loader.getResource("iceSwordMoveDown5.png").toString()),
+                            new Image(loader.getResource("iceSwordMoveDown6.png").toString())
                     }
             };
             atkImages = new Image[][]{
                     {
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkLeft1.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkLeft2.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkLeft3.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkLeft4.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkLeft5.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkLeft6.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkLeft4.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkLeft2.png")),
+                            new Image(loader.getResource("iceSwordAtkLeft1.png").toString()),
+                            new Image(loader.getResource("iceSwordAtkLeft2.png").toString()),
+                            new Image(loader.getResource("iceSwordAtkLeft3.png").toString()),
+                            new Image(loader.getResource("iceSwordAtkLeft4.png").toString()),
+                            new Image(loader.getResource("iceSwordAtkLeft5.png").toString()),
+                            new Image(loader.getResource("iceSwordAtkLeft6.png").toString()),
+                            new Image(loader.getResource("iceSwordAtkLeft4.png").toString()),
+                            new Image(loader.getResource("iceSwordAtkLeft2.png").toString()),
                             standImages[Direction.Left.ordinal()]
                     },
                     {
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkRight1.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkRight2.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkRight3.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkRight4.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkRight5.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkRight6.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkRight4.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkRight2.png")),
+                            new Image(loader.getResource("iceSwordAtkRight1.png").toString()),
+                            new Image(loader.getResource("iceSwordAtkRight2.png").toString()),
+                            new Image(loader.getResource("iceSwordAtkRight3.png").toString()),
+                            new Image(loader.getResource("iceSwordAtkRight4.png").toString()),
+                            new Image(loader.getResource("iceSwordAtkRight5.png").toString()),
+                            new Image(loader.getResource("iceSwordAtkRight6.png").toString()),
+                            new Image(loader.getResource("iceSwordAtkRight4.png").toString()),
+                            new Image(loader.getResource("iceSwordAtkRight2.png").toString()),
                             standImages[Direction.Right.ordinal()]
                     },
                     {
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkUp1.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkUp2.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkUp3.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkUp4.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkUp5.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkUp6.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkUp4.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkUp2.png")),
+                            new Image(loader.getResource("iceSwordAtkUp1.png").toString()),
+                            new Image(loader.getResource("iceSwordAtkUp2.png").toString()),
+                            new Image(loader.getResource("iceSwordAtkUp3.png").toString()),
+                            new Image(loader.getResource("iceSwordAtkUp4.png").toString()),
+                            new Image(loader.getResource("iceSwordAtkUp5.png").toString()),
+                            new Image(loader.getResource("iceSwordAtkUp6.png").toString()),
+                            new Image(loader.getResource("iceSwordAtkUp4.png").toString()),
+                            new Image(loader.getResource("iceSwordAtkUp2.png").toString()),
                             standImages[Direction.Up.ordinal()]
                     },
                     {
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkDown1.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkDown2.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkDown3.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkDown4.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkDown5.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkDown6.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkDown4.png")),
-                            new Image(new FileInputStream(wd + "\\resources\\weapon1\\atk\\atkDown2.png")),
-                            standImages[Direction.Up.ordinal()]
+                            new Image(loader.getResource("iceSwordAtkDown1.png").toString()),
+                            new Image(loader.getResource("iceSwordAtkDown2.png").toString()),
+                            new Image(loader.getResource("iceSwordAtkDown3.png").toString()),
+                            new Image(loader.getResource("iceSwordAtkDown4.png").toString()),
+                            new Image(loader.getResource("iceSwordAtkDown5.png").toString()),
+                            new Image(loader.getResource("iceSwordAtkDown6.png").toString()),
+                            new Image(loader.getResource("iceSwordAtkDown4.png").toString()),
+                            new Image(loader.getResource("iceSwordAtkDown2.png").toString()),
+                            standImages[Direction.Down.ordinal()]
                     }
             };
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
     }
 
     //初始化坐标修正矩阵

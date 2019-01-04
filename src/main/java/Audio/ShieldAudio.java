@@ -8,17 +8,10 @@ import java.io.IOException;
 
 public class ShieldAudio extends MyAudio {
     private AudioStream shield;
-    //private static AudioStream audio = null;
-    /*static{
-        try {
-            audio = new AudioStream(new FileInputStream(wd + "\\resources\\audio\\shield.wav"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
+
     public ShieldAudio(){
         try {
-            shield = new AudioStream(new FileInputStream(wd + "\\resources\\audio\\shield.wav"));
+            shield = new AudioStream(new FileInputStream(classPath + "\\audio\\shield.wav"));
         } catch (IOException e) {
             e.printStackTrace();
         }

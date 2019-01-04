@@ -1,5 +1,5 @@
 package Audio;
 
 public class MyAudio {
-    protected static final String wd = System.getProperty("user.dir");
+    protected static String classPath = MyAudio.class.getClassLoader().getResource("").getPath();
 }

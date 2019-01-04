@@ -16,11 +16,8 @@ public class Shield extends GameObject {
     private static Image effect;
     private static int maintainTime = 3000;     //效果持续时间(单位：毫秒)
     static{
-        try {
-            effect = new Image(new FileInputStream( wd + "\\resources\\effect2\\superFire.png"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        effect = new Image(loader.getResource("shield.png").toString());
+
     }
 
     public Shield(int x, int y, boolean good,GameAdmin admin){
